@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    let Todos = ["Hii","I am Puneeth","This is a project"]
+</script>
+<ol>
+    {#each Todos as Todo}
+    <li>{Todo}</li>
+    {/each}
+</ol>
