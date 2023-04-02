@@ -1,27 +1,44 @@
 <script>
-    let todos = [
-        {task:"Get books", isComplete: false, createdAt :"2021-08-06"},
-        {task:"Get Tickets", isComplete: false, createdAt :"2021-08-06"},
-        {task:"Get Bread", isComplete: true, createdAt :"2021-07-06"},
-        ]
+    let todos = [ ];
+    let task="";
 
+        
+    const addTodo = () => {
         let todo = {
-            task:"",
+            task:task,
             isComplete:false,
             createdAt:new Date(),
         };
-        const addTodo = () => {
-            todos = [...todos,todo];
-        }
+        todos = [todo,...todos];
+        task = "";
+    }
+    const markTodoAsComplete = (index) => {
+        todos[index].isComplete = !todos[index].isComplete;
+    }
+    const deleteTodo = (index) => {
+        let deleteItem = todos[index];
+        todos = todos.filter((item) => item !=deleteItem);
+    }
 
         $: console.table(todos);
 </script>
 
-<input type="text" bind:value={todo.task} />
+<input type="text" placeholder="Add a Task" bind:value={task} />
 <button on:click={addTodo}>Add</button>
+
 <ol>
-    {#each todos as todo}
-    <li class:complete={todo.isComplete}>{todo.task}</li>
+    {#each todos as item,index}
+    <li class:complete={item.isComplete}>
+    <span>
+        {item.task}
+    </span>
+    <span>
+        <button on:click={() => markTodoAsComplete(index)}>✔</button>
+        <button on:click={() => deleteTodo(index)}>✖</button>
+    </span>
+    </li>
+    {:else}
+    <p>No Todos Found</p> 
     {/each}
 </ol>
 
