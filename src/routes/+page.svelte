@@ -17,6 +17,7 @@
     }
     const deleteTodo = (index) => {
         let deleteItem = todos[index];
+        console.log(deleteItem);
         todos = todos.filter((item) => item !=deleteItem);
     }
 
