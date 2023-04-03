@@ -1,15 +1,30 @@
 <script>
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import {firebaseConfig} from "$lib/firebaseConfig";
 
-const firebaseApp = initializeApp(firebaseConfig); 
+const firebaseApp = initializeApp(firebaseConfig);
 
 const db =  getFirestore();
+
+const colRef = collection(db, "todos");
+
+let todos = [ ];
+
+const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
+    let fbTodos = [];
+  querySnapshot.forEach((doc) => {
+    let todo = {...doc.data(),id : doc.id}
+    fbTodos = [todo,...fbTodos];
+  });
+  console.table(fbTodos);
+});
+
+
 console.log({firebaseApp,db});
 
-    let todos = [ ];
+   
     let task="";
 
         
