@@ -1,4 +1,13 @@
 <script>
+
+import { initializeApp,getApps,getApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import {firebaseConfig} from "$lib/firebaseConfig";
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore();
+console.log({firebaseApp,db});
+
     let todos = [ ];
     let task="";
 
