@@ -1,7 +1,7 @@
 <script>
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot,doc, updateDoc, deleteDoc} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot,doc, updateDoc, deleteDoc, addDoc} from "firebase/firestore";
 import {firebaseConfig} from "$lib/firebaseConfig";
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -22,20 +22,18 @@ const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
 });
 
 
-console.log({firebaseApp,db});
 
    
     let task="";
 
         
-    const addTodo = () => {
-        let todo = {
-            task:task,
-            isComplete:false,
-            createdAt:new Date(),
-        };
+    const addTodo = async() => {
         if (task !== "" ){
-            todos = [todo,...todos]; 
+            const docRef = await addDoc(collection(db, "todos"),{
+                task:task,
+                isComplete:false,
+                createdAt:new Date(),
+            }) 
         }
         
         task = "";
@@ -54,7 +52,6 @@ console.log({firebaseApp,db});
         }
     }
 
-        $: console.table(todos);
 </script>
 
 <input type="text" placeholder="Add a Task" bind:value={task} />
