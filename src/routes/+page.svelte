@@ -1,7 +1,7 @@
 <script>
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot,doc, updateDoc} from "firebase/firestore";
 import {firebaseConfig} from "$lib/firebaseConfig";
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -18,7 +18,7 @@ const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
     let todo = {...doc.data(),id : doc.id}
     fbTodos = [todo,...fbTodos];
   });
-  console.table(fbTodos);
+  todos = fbTodos;
 });
 
 
@@ -40,8 +40,10 @@ console.log({firebaseApp,db});
         
         task = "";
     }
-    const markTodoAsComplete = (index) => {
-        todos[index].isComplete = !todos[index].isComplete;
+    const markTodoAsComplete = async (item) => {
+        await updateDoc(doc(db, "todos", item.id), {
+            isComplete: !item.isComplete
+        });
     }
     const deleteTodo = (index) => {
         let deleteItem = todos[index];
@@ -61,14 +63,14 @@ console.log({firebaseApp,db});
 <button on:click={addTodo}>Add</button>
 
 <ol>
-    {#each todos as item,index}
+    {#each todos as item}
     <li class:complete={item.isComplete}>
     <span>
         {item.task}
     </span>
     <span>
-        <button on:click={() => markTodoAsComplete(index)}>✔</button>
-        <button on:click={() => deleteTodo(index)}>✖</button>
+        <button on:click={() => markTodoAsComplete(item.id)}>✔</button>
+        <button on:click={() => deleteTodo(item)}>✖</button>
     </span>
     </li>
     {:else}
