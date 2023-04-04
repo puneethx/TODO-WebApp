@@ -1,7 +1,7 @@
 <script>
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot,doc, updateDoc} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot,doc, updateDoc, deleteDoc} from "firebase/firestore";
 import {firebaseConfig} from "$lib/firebaseConfig";
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -45,10 +45,8 @@ console.log({firebaseApp,db});
             isComplete: !item.isComplete
         });
     }
-    const deleteTodo = (index) => {
-        let deleteItem = todos[index];
-        console.log(deleteItem);
-        todos = todos.filter((item) => item !=deleteItem);
+    const deleteTodo = async(id) => {
+        await deleteDoc(doc(db, "todos", id));
     }
     const keyIsPressed = (event) =>{
         if(event.key === "Enter"){
@@ -69,8 +67,8 @@ console.log({firebaseApp,db});
         {item.task}
     </span>
     <span>
-        <button on:click={() => markTodoAsComplete(item.id)}>✔</button>
-        <button on:click={() => deleteTodo(item)}>✖</button>
+        <button on:click={() => markTodoAsComplete(item)}>✔</button>
+        <button on:click={() => deleteTodo(item.id)}>✖</button>
     </span>
     </li>
     {:else}
