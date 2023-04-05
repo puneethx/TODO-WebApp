@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, onSnapshot,doc, updateDoc, deleteDoc, addDoc} from "firebase/firestore";
 import {firebaseConfig} from "$lib/firebaseConfig";
 
+
+
 const firebaseApp = initializeApp(firebaseConfig);
 
 const db =  getFirestore();
@@ -53,9 +55,20 @@ const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
     }
 
 </script>
+<body>
+<p class = heading>TODO</p>
 
-<input type="text" placeholder="Add a Task" bind:value={task} />
-<button on:click={addTodo}>Add</button>
+<div class = "Texte">
+    <input type="text" class = "todotxt" placeholder="Add a Task"  maxlength="200" rows="100" cols="300" bind:value={task} />
+    <button class = "addbtn" on:click={addTodo}>+</button>    
+</div>
+    
+
+<div class = everything>
+
+
+
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 <ol>
     {#each todos as item}
@@ -72,11 +85,53 @@ const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
     <p>No Todos Found</p> 
     {/each}
 </ol>
+</div>
+</body>
+
 
 <svelte:window on:keydown={keyIsPressed} />
 
 <style>
     .complete{
         text-decoration: line-through;
+    }
+    .heading{
+        padding-left: 46%;
+        font-family: "Poppins",sans-serif;
+        font-weight: bold;
+        font-size: 250%;
+    }
+    .everything{
+        padding-left: 42%;
+        font-family: "Poppins",sans-serif;
+        font-size : 26px;
+    }
+    .todotxt{
+        background-color: #f1f99d;
+        font-size: 130%;
+        font-family: Poppins,sans-serif;
+        border: none;
+        height: 10%;
+        width: 450px;
+        padding-left: 2%;
+        border-radius: 15px;
+        padding-top: 2%;
+        padding-right: 2%;
+        padding-bottom: 2%;
+        text-transform: capitalize;
+    }
+    .Texte{
+        padding-left: 31%;
+        padding-bottom: 100px;
+        padding-top: 30px;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 0.5; /* Firefox */
+    }
+    .addbtn{
+        border-radius : 30%;
+        padding : 10px;
+        
     }
 </style>
