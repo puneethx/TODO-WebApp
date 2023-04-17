@@ -3,18 +3,17 @@
 	
 	export let todo;
 
-	$: completeClass = todo.complete ? 'bg-green-three' : 'bg-leaf-one';
+	$: completeClass = todo.complete ? 'background-color: #4ade80' : 'background-color: #8dc63f';
 </script>
-
-<div class="flex items-center justify-between rounded-md border-2 border-gray-one px-5 py-4">
-	<div class="flex w-full max-w-lg items-center justify-start">
-		<label for={`${todo.id}-checkbox`} class="sr-only">Complete todo</label>
+<div class="maindiv">
+	<div class="div2">
+		<label for={`${todo.id}-checkbox`} class="labclass">Complete todo</label>
 		<input
 			id={`${todo.id}-checkbox`}
 			type="checkbox"
 			checked={todo.complete}
 			on:change={() => toggleComplete(todo.id)}
-			class="h-4 w-4 rounded border border-gray-three bg-cream-four text-green-four focus:border-green-five focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-green-five"
+			class="inputclass"
 		/>
 		<label for={`${todo.id}-text`} class="sr-only">Edit todo</label>
 		<input
@@ -59,3 +58,51 @@
 		</svg>
 	</button>
 </div>
+
+<style>
+	.maindiv{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.375rem;
+		border: 2px solid #e5e7eb;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+
+	.divclass{
+		display: flex;
+		width: 100%;
+		max-width: 32rem;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+
+	.labclass{
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.inputclass{
+		height: 4px;
+		width: 4px;
+		border-radius: 0.25rem;
+		border: 1px solid #cbd5e0;
+		background-color: #f3f4f6;
+		color: #22c55e;
+		outline: none;
+		border-color: #cbd5e0;
+		box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5);
+
+	}
+</style>
