@@ -1,6 +1,6 @@
 <script>
-	import TodoInput from './TodoInput.svelte';
-	import { todos } from '../../store/TodoStore';
+	import TodoInput from '$lib/components/todo/TodoInput.svelte';
+	import { todos } from '$lib/stores/todoStore';
 </script>
 
 <section class="mt-8 space-y-4">

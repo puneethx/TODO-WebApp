@@ -1,6 +1,6 @@
 <script>
-	import { deleteTodo, toggleComplete, editTodo } from '../../store/TodoStore';
-
+	import { deleteTodo, toggleComplete, editTodo } from '$lib/stores/todoStore';
+	
 	export let todo;
 
 	$: completeClass = todo.complete ? 'bg-green-three' : 'bg-leaf-one';
