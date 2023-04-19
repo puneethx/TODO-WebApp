@@ -12,11 +12,12 @@
     $: progressPercentage = Math.round((progressCount / totalCount) * 100) || 0;
 </script> 
 <section class="section">
-    <h3 class = "h3" font-bold text-gray-three>
+    <h3 class = "h3">
         Progress
     </h3>
     <div class="element">
         <ProgressBar title = "In Progress" percentage = {progressPercentage} />
+        <br>
         <ProgressBar title = "Completed" percentage = {completePercentage} />
     </div>
 </section>

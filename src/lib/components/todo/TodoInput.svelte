@@ -2,30 +2,23 @@
 	import { deleteTodo, toggleComplete, editTodo } from '$lib/stores/todoStore';
 	
 	export let todo;
-
 	$: completeClass = todo.complete ? 'background-color: #4ade80' : 'background-color: #8dc63f';
 </script>
 <div class="maindiv">
 	<div class="div2">
-		<label for={`${todo.id}-checkbox`} class="labclass">Complete todo</label>
-		<input
-			id={`${todo.id}-checkbox`}
-			type="checkbox"
-			checked={todo.complete}
-			on:change={() => toggleComplete(todo.id)}
-			class="inputclass"
-		/>
-		<label for={`${todo.id}-text`} class="sr-only">Edit todo</label>
+		<label for={`${todo.id}-checkbox`} class="labclass"></label>
+		<input id={`${todo.id}-checkbox`} type="checkbox" checked={todo.complete} on:change={() => toggleComplete(todo.id)} class="inputclass" />
+		<label for={`${todo.id}-text`} class="todoEdit">Edit todo</label>
 		<input
 			id={`${todo.id}-text`}
 			type="text"
 			placeholder="Enter a todo"
 			value={todo.text}
 			on:input={(e) => editTodo(todo.id, e.target.value)}
-			class="ml-5 flex-1 text-ellipsis rounded-none border-x-0 border-t-0 border-b border-dashed border-b-gray-two bg-cream-four px-0 pb-1 text-base font-normal text-gray-three placeholder:text-gray-two focus:border-gray-three focus:outline-none focus:ring-0"
+			class="inputTodo"
 		/>
 		<span
-			class="{completeClass} ml-5 hidden rounded-full py-0.5 px-2 text-sm font-normal text-gray-five md:block"
+			class="{completeClass}"
 		>
 			{todo.complete ? 'Complete' : 'In Progress'}
 		</span>
@@ -33,11 +26,11 @@
 	<button
 		type="button"
 		on:click={() => deleteTodo(todo.id)}
-		class="group ml-4 flex items-center justify-center rounded-md bg-cream-four p-2 hover:bg-steel-one focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-five"
+		class="deleteTodo"
 	>
-		<span class="sr-only">Delete todo</span>
+		<span class="deletespan">Delete todo</span>
 		<svg
-			class="h-5 w-5 text-steel-three group-hover:text-gray-five"
+			class="svgclass"
 			width="32"
 			height="32"
 			viewBox="0 0 32 32"
@@ -58,8 +51,61 @@
 		</svg>
 	</button>
 </div>
+<div class = "gap"></div>
 
 <style>
+	.gap{
+		padding-top:10px;
+	}
+	.deletespan{
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
+	white-space: nowrap;		
+	}
+	.deleteTodo{
+		position: relative;
+		margin-left: 1rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.375rem;
+		background-color: #f9f5e8;
+		padding: 0.5rem;
+	}
+	.deleteTodo:hover{
+		background-color: #4a5568;
+	}
+	.deleteTodo:focus{
+		outline: none;
+	}
+	.deleteTodo.focus-visible{
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+		outline-color: #48bb78;
+	}
+	.completeClass{
+		margin-left: 1.25rem;
+		display: none !important;
+		border-radius: 9999px;
+		padding-top: 0.125rem;
+  		padding-bottom: 0.125rem;
+		padding-left: 0.5rem;
+  		padding-right: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: #718096;
+		color: #cbd5e0;
+	}
+
+	@media (min-width: 768px) {
+		.md\:block {
+			display: block !important;
+		}
+	}
 	.maindiv{
 		display: flex;
 		align-items: center;
@@ -82,27 +128,74 @@
 
 
 	.labclass{
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
+		padding: 0; 
 		overflow: hidden;
 		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
 		border: 0;
+		width : auto;
+		height : auto;
+		padding-left: 10px;
 	}
 
 	.inputclass{
-		height: 4px;
-		width: 4px;
-		border-radius: 0.25rem;
+		height: 10px;
+		width: 10px;
+		border-radius: 50px;
 		border: 1px solid #cbd5e0;
 		background-color: #f3f4f6;
 		color: #22c55e;
 		outline: none;
-		border-color: #cbd5e0;
 		box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5);
 
+	}
+	.todoEdit{
+		position: absolute;
+		clip: rect(1px, 1px, 1px, 1px);
+		padding: 0;
+		border: 0;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
+	.inputTodo{
+		margin-left: 1.25rem;
+		flex-grow: 1;
+		width :50%;
+		white-space: nowrap;
+  		overflow: hidden;
+  		text-overflow: ellipsis;
+		border-radius: 0;
+		border-left: none;
+  		border-right: none;
+		border-top: none;
+		border-bottom-style: dashed;
+		border-bottom-color: #cbd5e0;
+		border-bottom-width: 1px;
+		background-color: #fbf6ee;
+		padding-left: 0;
+  		padding-right: 0;
+		padding-bottom: 0.25rem;
+		font-size: 1rem;
+		font-weight: 400;
+		color: #4a5568;
+	
+	}
+	.inputTodo::placeholder{
+		color: #a0aec0;
+	}
+	.inputTodo:focus{
+		border-color: #cbd5e0;
+  		border-style: solid;
+		outline: none;
+		box-shadow: none;
+	}
+	.svgclass{
+		height: 1.25rem;
+		width: 1.25rem;
+		color: #8795A1;
+	}
+	.svgclass:hover{
+		color: #CBD5E1;
 	}
 </style>

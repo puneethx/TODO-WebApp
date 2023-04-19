@@ -2,16 +2,11 @@
 	import { addTodo } from '$lib/stores/todoStore';
 </script>
 
-<section class="flex justify-between">
-	<h3 class="text-xl font-bold text-gray-three">Checklist</h3>
-	<button
-		class="group flex items-center rounded-md border-cream-four bg-green-one px-6 py-3 text-lg font-semibold text-gray-five outline outline-2 outline-offset-2 outline-green-one hover:text-green-five focus-visible:text-green-five focus-visible:outline-green-five"
-		type="button"
-		on:click={addTodo}
-	>
-		Add Task
+<section class="container">
+	<h3 class="h3">Checklist</h3>
+	<button class="button" type="button" on:click={addTodo} > Add Task
 		<svg
-			class="ml-3 h-4 w-4 text-gray-five group-hover:text-green-five group-focus-visible:text-green-five"
+			class="svgclass"
 			width="32"
 			height="32"
 			viewBox="0 0 32 32"
@@ -33,3 +28,45 @@
 		</svg>
 	</button>
 </section>
+
+<style>
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
+	.h3{
+		font-size: 1.25rem;
+		font-weight: bold;
+		color: #8c8c8c;
+	}
+	.button{
+		display: flex;
+		align-items: center;
+		border-radius: 0.375rem; 
+		border: 0.0625rem solid #d3d3d3;
+		background-color: #fff7bf; 
+		padding: 0.8rem; 
+		font-size: 1.125rem; 
+		font-weight: 600; 
+		color: #111827; 
+		outline: 0.125rem solid #fff7bf; 
+		outline-offset: 0.125rem;
+
+	}
+	.button:hover {
+		color: #6e7039;
+	}
+	.button:focus-visible > *{
+		color: var(--green-five); /* equivalent to focus-visible:text-green-five */
+  		outline: 0.125rem solid var(--green-five);
+	}
+	.svgclass{
+		margin-left: 0.75rem; /* equivalent to ml-3 */
+  		height: 1rem; /* equivalent to h-4 */
+  		width: 1rem; /* equivalent to w-4 */
+  		color: var(--gray-five); /* equivalent to text-gray-five */
+	}
+	.svgclass:hover , .svgclass:focus-visible {
+  		color: var(--green-five);
+	}
+</style>

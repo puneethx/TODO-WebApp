@@ -11,7 +11,7 @@
 	</div>
 	<div class="divclass">
 		<div
-			class="{completeClass} h-4 rounded-full transition-all duration-500 ease-out"
+			class="{completeClass}"
 			style="width: {percentage}%"
 		/>
 	</div>
@@ -32,6 +32,11 @@
 		width: 100%;
 		overflow: hidden;
 		border-radius: 2px;
-		background-color: #F7FAFC;
+		background-color: #c7c7c7;
+	}
+	.completeClass{
+		height: 4px;
+		border-radius: 9999px;
+		transition: all 500ms ease-out;	
 	}
 </style>
