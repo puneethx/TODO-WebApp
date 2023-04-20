@@ -1,7 +1,7 @@
 <script>
 	export let title;
 	export let percentage;
-	$: completeClass = title === 'Completed' ? 'bg-green-four' : 'bg-leaf-one';
+	$: completeClass = title === 'Completed' ? "background-color:DodgerBlue;" : "background-color:DodgerBlue;";
 </script>
 
 <div>

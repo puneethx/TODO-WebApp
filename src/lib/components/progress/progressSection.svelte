@@ -16,7 +16,7 @@
         Progress
     </h3>
     <div class="element">
-        <ProgressBar title = "In Progress" percentage = {progressPercentage} />
+        <ProgressBar title = "In Progress"  percentage = {progressPercentage} />
         <br>
         <ProgressBar title = "Completed" percentage = {completePercentage} />
     </div>
