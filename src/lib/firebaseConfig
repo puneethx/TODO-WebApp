@@ -1,8 +1,0 @@
-export const firebaseConfig = {
-  apiKey: "AIzaSyBjtMPM4Q7DPZAWK_R_9w0hrw3BMWwd8Uo",
-  authDomain: "sveltekit-todos-3330d.firebaseapp.com",
-  projectId: "sveltekit-todos-3330d",
-  storageBucket: "sveltekit-todos-3330d.appspot.com",
-  messagingSenderId: "329375120911",
-  appId: "1:329375120911:web:3cb5e6bac085c9d2036d7a"
-};

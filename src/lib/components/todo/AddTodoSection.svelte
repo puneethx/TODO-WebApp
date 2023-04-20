@@ -48,6 +48,7 @@
 		padding: 0.8rem; 
 		font-size: 1.125rem; 
 		font-weight: 600; 
+		padding : 1%;
 		color: #111827; 
 		outline: 0.125rem solid #fff7bf; 
 		outline-offset: 0.125rem;

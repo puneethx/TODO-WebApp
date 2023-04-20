@@ -25,47 +25,48 @@
 		min-height: 100vh;
 		background-color: #cccd82;
 		padding: 0;
-		padding-top:100px;
+		padding-top: 13.5%;
 		font-family: "Poppins",sans-serif;
 	}
 	::selection {
-		background-color: #87D3B4;
+		background-color: #fff9a0;
 	}
-/* @media screen and (min-width: 768px){
-	padding-top: 6rem;
-	padding-bottom: 6rem;
-
-	padding-left: 2rem;
-	padding-right: 2rem;
-} */
+@media screen and (min-width: 768px){
+	.divclass{
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
 	.h1{
 		color: black;
 		font-family: "Poppins",sans-serif;
 	}
 .mainclass{
-	margin-left: 100px;
-	margin-right: 100px;
+	margin-left: 6.8%;
+	margin-right: 6.8%;
 	max-width: none;
 	border-radius: 10px;
 	background-color: #f9f5e8;
-	padding-left: 25px;
-	padding-right: 25px;
-	padding-top: 25px;
-	padding-bottom: 50px;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+	padding-top: 2.5%;
+	padding-bottom: 5%;
 	box-shadow: 
-    0 0 0 6px #cccd82, /* First outline: black */
-    0 0 0 9px #FFFFFF; /* Second outline: white */
+    0 0 0 6px #cccd82, 
+    0 0 0 9px #FFFFFF; 
 }
 
-/* @media (min-height: 100%) {
-  max-width: 60rem;
+@media (min-height: 900px) {
+  .mainclass{max-width: 60rem;
   min-height: max-content;
   border-radius: 2rem;
   padding-left: 8px;
   padding-right: 8px;
   outline: 4px solid #f9f5e8;
-  outline-offset: 8px;
-} */
+  outline-offset: 8px;}
+}
 
 h1{
 font-size: 1.5rem;

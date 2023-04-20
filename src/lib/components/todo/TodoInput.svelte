@@ -7,7 +7,7 @@
 <div class="maindiv">
 	<div class="div2">
 		<label for={`${todo.id}-checkbox`} class="labclass"></label>
-		<input id={`${todo.id}-checkbox`} type="checkbox" checked={todo.complete} on:change={() => toggleComplete(todo.id)} class="inputclass" />
+		<input id={`${todo.id}-checkbox`} type="checkbox" checked={todo.complete} on:change={() => toggleComplete(todo.id)} class="inputclass"/>
 		<label for={`${todo.id}-text`} class="todoEdit">Edit todo</label>
 		<input
 			id={`${todo.id}-text`}
@@ -161,7 +161,6 @@
 	.inputTodo{
 		margin-left: 1.25rem;
 		flex-grow: 1;
-		width :50%;
 		white-space: nowrap;
   		overflow: hidden;
   		text-overflow: ellipsis;
